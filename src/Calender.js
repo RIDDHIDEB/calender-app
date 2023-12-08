@@ -130,32 +130,32 @@ const Calendar = () => {
         <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
             <h2>{year} Calendar</h2>
             <div className='calender-container'>
-            {months.map((month, index) => (
-                <div key={index} className='month-container'>
-                <h3>{month}</h3>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Sun</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {generateMonthDays(index, year).map((week, weekIndex) => (
-                        <tr key={weekIndex}>
-                        {week.map((day, dayIndex) => (
-                            <td key={dayIndex}>{day > 0 ? day : ''}</td>
-                        ))}
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-                </div>
+                {months.map((month, index) => (
+                    <div key={index} className='month-container'>
+                    <h3>{month}</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sun</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {generateMonthDays(index, year).map((week, weekIndex) => (
+                                <tr key={weekIndex}>
+                                {week.map((day, dayIndex) => (
+                                    <td key={dayIndex}>{day > 0 ? day : ''}</td>
+                                ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                 </div>
             ))}
             </div>
         </div>
