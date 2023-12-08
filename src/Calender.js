@@ -124,7 +124,7 @@ const handleSearchHistoricalDate = () => {
   const fetchHistoricalEvent = async () => {
     try {
       const response = await axios.get('https://historical-events-by-api-ninjas.p.rapidapi.com/v1/historicalevents');
-      setHistoricalEvent(response);
+      setHistoricalEvent(response.data);
     } catch (error) {
       console.error('Error fetching historical event:', error.message);
       setHistoricalEvent('Failed to fetch historical event.');
