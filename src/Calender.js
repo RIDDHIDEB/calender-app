@@ -102,7 +102,8 @@
 
 //=========
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import axios from 'axios';
 import { Button } from '@mui/material';
 import './Calender.css';
 
@@ -116,6 +117,29 @@ const Calendar = () => {
 //   const handleCheckLeapYear = () => {
 //     setLeapYear((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0);
 //   };
+const handleSearchHistoricalDate = () => {
+    fetchHistoricalEvent();
+  };
+
+  const fetchHistoricalEvent = async () => {
+    try {
+      const response = await axios.get('https://historical-events-by-api-ninjas.p.rapidapi.com/v1/historicalevents');
+      setHistoricalEvent(response);
+    } catch (error) {
+      console.error('Error fetching historical event:', error.message);
+      setHistoricalEvent('Failed to fetch historical event.');
+    }
+  };
+
+  useEffect(() => {
+    if (searchDate) {
+      fetchHistoricalEvent();
+    }
+  }, [searchDate]);
+
+//   const getMonth = (date) => new Date(date).getMonth() + 1;
+//   const getDay = (date) => new Date(date).getDate();
+
 
   const getDaysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
@@ -135,7 +159,7 @@ const Calendar = () => {
             <label>
                 Search date (YYYY-MM-DD):
                 <input style={{height:"30px"}} type="text" value={searchDate} onChange={(e) => setSearchDate(e.target.value)}/>
-                <Button variant='contained' style={{marginLeft:"10px"}}>Search Date</Button>
+                <Button onClick={handleSearchHistoricalDate} variant='contained' style={{marginLeft:"10px"}}>Search Date</Button>
             </label>
             {historicalEvent && <p>{historicalEvent}</p>}
             <div className='calender-container'>
