@@ -108,6 +108,8 @@ import './Calender.css';
 
 const Calendar = () => {
   const [year, setYear] = useState(new Date().getFullYear());
+  const [searchDate, setSearchDate] = useState('');
+  const [historicalEvent, setHistoricalEvent] = useState('');
 //   const [leapYear, setLeapYear] = useState(false);
 
 //   const handleCheckLeapYear = () => {
@@ -128,7 +130,13 @@ const Calendar = () => {
     return (  
         <>
         <div className='main-container'>
-            <h2>{year} Calendar</h2>
+            <h2>YEAR {year}</h2>
+            <label>
+                Search date (YYYY-MM-DD):
+                <input style={{height:"30px"}} type="text" value={searchDate} onChange={(e) => setSearchDate(e.target.value)}/>
+                <Button variant='contained' style={{marginLeft:"10px"}}>Search Date</Button>
+            </label>
+            
             <div className='calender-container'>
                 {months.map((month, index) => (
                     <div key={index} className='month-container'>
@@ -188,7 +196,7 @@ const Calendar = () => {
 
   return (
     <div>
-      <h1>Leap Year Calendar</h1>
+      <h1>Calendar</h1>
       <div>
         <label>
           Enter a year:
