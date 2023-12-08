@@ -1,0 +1,11 @@
+.calender-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.month-container{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
