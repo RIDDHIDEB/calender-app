@@ -127,7 +127,7 @@ const Calendar = () => {
 
     return (  
         <>
-        <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+        <div className='main-container'>
             <h2>{year} Calendar</h2>
             <div className='calender-container'>
                 {months.map((month, index) => (
