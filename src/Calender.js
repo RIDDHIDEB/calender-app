@@ -110,6 +110,7 @@ const Calendar = () => {
   const [year, setYear] = useState(new Date().getFullYear());
   const [searchDate, setSearchDate] = useState('');
   const [historicalEvent, setHistoricalEvent] = useState('');
+  
 //   const [leapYear, setLeapYear] = useState(false);
 
 //   const handleCheckLeapYear = () => {
@@ -136,7 +137,7 @@ const Calendar = () => {
                 <input style={{height:"30px"}} type="text" value={searchDate} onChange={(e) => setSearchDate(e.target.value)}/>
                 <Button variant='contained' style={{marginLeft:"10px"}}>Search Date</Button>
             </label>
-            
+            {historicalEvent && <p>{historicalEvent}</p>}
             <div className='calender-container'>
                 {months.map((month, index) => (
                     <div key={index} className='month-container'>
