@@ -134,7 +134,7 @@ const handleSearchHistoricalDate = () => {
     } catch (error) {
       console.error('Error fetching historical event:', error.message);
       console.error('Response data:', error.response.data);
-      setHistoricalEvent('Failed to fetch historical event.');
+      setHistoricalEvent('Failed to fetch historical event');
     }
   };
 
