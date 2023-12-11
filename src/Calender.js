@@ -163,11 +163,11 @@ const handleSearchHistoricalDate = () => {
         <>
         <div className='main-container'>
             <h2>YEAR {year}</h2>
-            <label>
-                Search date (DD-MM-YYYY): 
-                <input style={{height:"30px"}} type="text" value={searchDate} onChange={(e) => setSearchDate(e.target.value)}/>
-                <Button onClick={handleSearchHistoricalDate} variant='contained' style={{marginLeft:"10px"}}>Search Date</Button>
-            </label>
+            <div>
+              <label>Search date (DD-MM-YYYY):</label>
+              <input style={{height:"30px"}} type="text" value={searchDate} onChange={(e) => setSearchDate(e.target.value)}/>
+              <Button onClick={handleSearchHistoricalDate} variant='contained' style={{marginLeft:"10px"}}>Search Date</Button>
+            </div>
             {historicalEvent && <p>{historicalEvent}</p>}
             <div className='calender-container'>
                 {months.map((month, index) => (
