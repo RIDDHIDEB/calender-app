@@ -116,17 +116,24 @@ const Calendar = () => {
 
 //   const handleCheckLeapYear = () => {
 //     setLeapYear((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0);
-//   };
+
+   
 const handleSearchHistoricalDate = () => {
     fetchHistoricalEvent();
   };
 
   const fetchHistoricalEvent = async () => {
     try {
-      const response = await axios.get('https://historical-events-by-api-ninjas.p.rapidapi.com/v1/historicalevents');
+      const response = await axios.get('https://historical-events-by-api-ninjas.p.rapidapi.com/v1/historicalevents', {
+        headers: {
+          'X-RapidAPI-Key': '56081cf632mshf0041bf3feed38dp148381jsnc7ee8f1d90b2',
+          'X-RapidAPI-Host': 'historical-events-by-api-ninjas.p.rapidapi.com',
+        },
+      });
       setHistoricalEvent(response.data);
     } catch (error) {
       console.error('Error fetching historical event:', error.message);
+      console.error('Response data:', error.response.data);
       setHistoricalEvent('Failed to fetch historical event.');
     }
   };
@@ -157,7 +164,7 @@ const handleSearchHistoricalDate = () => {
         <div className='main-container'>
             <h2>YEAR {year}</h2>
             <label>
-                Search date (YYYY-MM-DD):
+                Search date (DD-MM-YYYY): 
                 <input style={{height:"30px"}} type="text" value={searchDate} onChange={(e) => setSearchDate(e.target.value)}/>
                 <Button onClick={handleSearchHistoricalDate} variant='contained' style={{marginLeft:"10px"}}>Search Date</Button>
             </label>
